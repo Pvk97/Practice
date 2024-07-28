@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Piedra, Papel Tijera</title>
+    <script>
+        // 1 es piedra, 2 es papel, 3 es tijera
+        function aleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function eleccion(jugada) {
+            if (jugada == 1) {
+                return "Piedra 🥌";
+            } else if (jugada == 2) {
+                return "Papel 🧻";
+            } else if (jugada == 3) {
+                return "Tijeras ✂";
+            } else {
+                return "NOOOO, Tienes miedo humano 😒";
+            }
+        }
+
+        let triunfos = 0;
+        let perdidas = 0;
+
+        while (triunfos < 3 && perdidas < 3) {
+            let pc = aleatorio(1, 3);
+            let jugador = parseInt(prompt("Elige: 1 Para piedra, 2 para Papel y 3 para Tijera"));
+
+            // Elecciones Jugador y PC
+            alert("Juegas " + eleccion(jugador));
+            alert("PC juega " + eleccion(pc));
+
+            // COMBATE
+            if (jugador === pc) {
+                alert("EMPATE");
+            } else if ((jugador === 1 && pc === 3) || (jugador === 2 && pc === 1) || (jugador === 3 && pc === 2)) {
+                alert("Ganaste");
+                triunfos++;
+            } else {
+                alert("Perdiste");
+                perdidas++;
+            }
+
+            alert("Has ganado " + triunfos + " veces. Has perdido " + perdidas + " veces.");
+        }
+
+        alert("Juego terminado. Ganaste " + triunfos + " veces y perdiste " + perdidas + " veces.");
+    </script>
+</head>
+<body>
+    <h1>Piedra, Papel o Tijera</h1>
+</body>
+</html>
